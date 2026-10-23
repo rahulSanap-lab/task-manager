@@ -1,0 +1,156 @@
+
+import 'package:flutter/material.dart';
+
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor:  Color(0xFFF5F0FF),
+      body: Padding(
+        padding:  EdgeInsets.all(25),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               SizedBox(height: 40),
+      
+               Icon(
+                Icons.person_add_alt_1,
+                size: 80,
+                color: Color(0xFF536DFE),
+              ),
+      
+              SizedBox(height: 25),
+      
+             Text(
+                'Create Account',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF191936),
+                ),
+              ),
+      
+             SizedBox(height: 10),
+      
+               Text(
+                'Sign up to get started',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+      
+               SizedBox(height: 35),
+      
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Full Name',
+                  prefixIcon: Icon(Icons.person_outline),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+      
+               SizedBox(height: 15),
+      
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  prefixIcon:  Icon(Icons.email_outlined),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+      
+              SizedBox(height: 15),
+      
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  prefixIcon: Icon(Icons.lock_outline),
+                  suffixIcon:  Icon(Icons.visibility_off),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+      
+               SizedBox(height: 15),
+      
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Confirm Password',
+                  prefixIcon:  Icon(Icons.lock_outline),
+                  suffixIcon:  Icon(Icons.visibility_off),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+      
+               SizedBox(height: 30),
+      
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  Color(0xFF536DFE),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child:  Text(
+                    'Sign Up',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+      
+               SizedBox(height: 20),
+      
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   Text(
+                    'Already have an account? ',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child:  Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Color(0xFF536DFE),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
