@@ -21,7 +21,9 @@ class _myAppState extends State<myApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:splash(),
+      home:task(),
+        
+
       
 
       routes: {
