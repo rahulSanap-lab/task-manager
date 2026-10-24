@@ -31,8 +31,7 @@ class _loginState extends State<login> {
           ),
                
           
-              SizedBox(height: 30), Text("hello") ,
-          
+              SizedBox(height: 30), 
               Email() ,
           
               SizedBox(height: 20),
