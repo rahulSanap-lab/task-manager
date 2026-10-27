@@ -110,8 +110,22 @@ class _loginState extends State<login> {
                   email.clear();
                   password.clear();
 
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.green,
+                  content: Text("Login Successfully",style: TextStyle(),),
+                    duration: Duration(seconds: 2),
+      ),
+
+    );
+                  Navigator.pushNamed(context, "dashboard");
+
                  }
+                
+
                   print("Login clicked");
+
                 },
                 child: Text("Login"),
               ),
