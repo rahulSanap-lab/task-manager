@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/bottomNavigationbar.dart';
 import 'package:taskmanager/modal/todo_Modal.dart';
 import 'package:taskmanager/repo/getdata.dart';
 
@@ -12,27 +13,22 @@ class task extends StatefulWidget {
 TextEditingController tsk = TextEditingController();
 
 class _taskState extends State<task> {
+  List<Addtask> Tasks = [];
 
-  List <Addtask> Tasks= [] ;
-
-  @override 
-   
-   void initState(){
-    super.initState() ;
-    call_fn() ;
-   }
-
-   Future call_fn() async{
-    final data = await getuserData().getdata() ;
-
-    setState(() {
-      Tasks = data ;
-    });
-
+  @override
+  void initState() {
+    super.initState();
+    call_fn();
   }
 
+  Future call_fn() async {
+    final data = await getuserData().getdata();
 
-  
+    setState(() {
+      Tasks = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,18 +50,11 @@ class _taskState extends State<task> {
                     child: Column(
                       children: [
                         ListTile(
-                          // leading: CircleAvatar(
-                          //   backgroundColor: const Color.fromARGB(
-                          //     255,
-                          //     15,
-                          //     183,
-                          //     235,
-                          //   ),
-                          // ),
+                          
                           title: Text(Tasks[index].title ?? ""),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
-                            children: [edi(), del()],
+                            children: [edi(index), del(index)],
                           ),
                         ),
                       ],
@@ -92,22 +81,15 @@ class _taskState extends State<task> {
                 ),
                 actions: [
                   TextButton(
-                    onPressed: () async{
-
-                      if(tsk.text.trim().isEmpty) return ;
+                    onPressed: () async {
+                      if (tsk.text.trim().isEmpty) return;
 
                       await getuserData().postdata(tsk.text.trim());
-                     
-                      
-                      tsk.clear();
+
                       Navigator.pop(context);
-                      
+
                       await call_fn();
-                  
-                      
-
-
-
+                      tsk.clear();
                     },
                     child: Text("Add"),
                   ),
@@ -126,32 +108,50 @@ class _taskState extends State<task> {
 
         child: Icon(Icons.add),
       ),
+    
+    // bottomNavigationBar: bar(),
+
     );
   }
 
-  Widget edi() {
+  Widget edi(int index) {
     return IconButton(
       onPressed: () {
+        tsk.text = Tasks[index].title ?? "";
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text("Add Task"),
+              title: Text("update Task"),
               content: TextFormField(
-                decoration: InputDecoration(hintText: "Add Task"),
+                decoration: InputDecoration(hintText: "update Task"),
                 controller: tsk,
               ),
+
               actions: [
                 TextButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    if (tsk.text.trim().isEmpty) return;
+
+                    await getuserData().putdata(Tasks[index].id!, tsk.text);
+
+                    await call_fn();
+                    tsk.clear();
                     Navigator.pop(context);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Task updated successfully!"),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
                   },
-                  child: Text("save"),
+                  child: Text("Update"),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context, context);
-                    tsk.clear();
+                    // tsk.clear();
                   },
                   child: Text("Cancel"),
                 ),
@@ -164,18 +164,51 @@ class _taskState extends State<task> {
     );
   }
 
-  Widget del() {
-    return IconButton(onPressed: () {
+  Widget del(int index) {
+    return IconButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Delete Task"),
+              content: Text("are you sure you want delete task"),
+              actions: [
+                TextButton(
+                  onPressed: () async {
+                    await getuserData().deletedata(Tasks[index].id!);
 
-      showDialog(context: context, builder: (context){
-        return AlertDialog(
-          title: Text("Delete Task"),
-          actions: [
-            TextButton(onPressed: (){Navigator.pop(context);}, child:Text("Yes")),
-             TextButton(onPressed: (){Navigator.pop(context);}, child:Text("No"))
-          ],
+                    await call_fn();
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Task deleted successfully!"),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          50,
+                          136,
+                          218,
+                        ),
+                      ),
+                    );
+
+                    Navigator.pop(context);
+                  },
+                  child: Text("Yes"),
+                ),
+
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("No"),
+                ),
+              ],
+            );
+          },
         );
-      });
-    }, icon: Icon(Icons.delete));
+      },
+      icon: Icon(Icons.delete),
+    );
   }
 }

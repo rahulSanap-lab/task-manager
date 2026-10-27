@@ -109,7 +109,9 @@ class SignupScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'dashboard');
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:  Color(0xFF536DFE),
                     foregroundColor: Colors.white,
