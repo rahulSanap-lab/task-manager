@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class splash extends StatefulWidget {
   const new({super.key});
@@ -44,7 +45,7 @@ void initState(){
              SizedBox(height: 25),
 
              Text(
-              'TaskFlow',
+              Appstring.tskflow,
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
@@ -55,7 +56,7 @@ void initState(){
              SizedBox(height: 10),
 
             Text(
-              'Plan it. Do it. Achieve it.',
+              Appstring.plit,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.blueGrey,

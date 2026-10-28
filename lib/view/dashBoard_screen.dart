@@ -12,70 +12,70 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
- 
- List <Addtask> tasks = [];
+  List<Addtask> tasks = [];
 
- void initState(){
-  super.initState();
-  fetch();
- }
+  @override
+  void initState() {
+    super.initState();
+    fetch();
+  }
 
- void fetch ()async{
-  final data = await getuserData().getdata();
-   setState(() {
-     tasks = data ;
-   });
-  
- }
+  void fetch() async {
+    final data = await getuserData().getdata();
 
+    if (!mounted) return;
 
+    setState(() {
+      tasks = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F7FD),
 
-      // AppBar
       appBar: AppBar(
         backgroundColor: const Color(0xFF2878F0),
-        elevation: 5,
-        toolbarHeight: 85,
+        elevation: 0,
+        toolbarHeight: 70,
         leading: const Icon(
           Icons.check_circle,
           color: Colors.white,
-          size: 42,
+          size: 35,
         ),
         title: const Text(
           'Task Manager',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        actions:  [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: IconButton(onPressed:(){
-              Navigator.pushNamed(context,"profile");
-            },
-             icon:Icon(
-              Icons.account_circle,
-              color: Colors.white,
-              size: 42,
-            ),)
+            padding: const EdgeInsets.only(right: 12),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "profile");
+              },
+              icon: const Icon(
+                Icons.account_circle,
+                color: Colors.white,
+                size: 35,
+              ),
+            ),
           ),
         ],
       ),
 
-      // Body
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 5),
+              const SizedBox(height: 8),
 
               goodm(),
 
@@ -83,28 +83,121 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
               welback(),
 
-              const SizedBox(height: 5),
+              const SizedBox(height: 18),
 
               dashboard(),
 
-              const SizedBox(height: 5),
+              const SizedBox(height: 12),
 
               card(),
+
+              const SizedBox(height: 25),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Recent Tasks",
+                    style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF142238),
+                    ),
+                  ),
+
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "tasks");
+                    },
+                    child: const Text(
+                      "View all →",
+                      style: TextStyle(
+                        color: Color(0xFF2878F0),
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
               const SizedBox(height: 5),
 
               Expanded(
-                child: ListView.builder(
-                  itemCount: tasks.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      color: const Color.fromARGB(255, 201, 213, 253),
-                      child: ListTile(
-                        title: Text(tasks[index].title ?? ""),
+                child: tasks.isEmpty
+                    ? const Center(
+                        child: Text(
+                          "No tasks available",
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 16,
+                          ),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: tasks.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.only(bottom: 12),
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(18),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blue.withOpacity(0.06),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        tasks[index].title ?? "",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF142238),
+                                        ),
+                                      ),
+
+                                      const SizedBox(height: 8),
+
+                                      const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.calendar_today_outlined,
+                                            size: 15,
+                                            color: Colors.blueGrey,
+                                          ),
+                                          SizedBox(width: 6),
+                                          Text(
+                                            "Task",
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: Colors.blueGrey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                const Icon(
+                                  Icons.more_vert,
+                                  color: Colors.blueGrey,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
             ],
           ),
@@ -115,30 +208,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // Good Morning
   Widget goodm() {
     return const Text(
       'Good Morning,',
       style: TextStyle(
-        fontSize: 25,
+        fontSize: 19,
         color: Color(0xFF65798E),
       ),
     );
   }
 
-  // Welcome Back
   Widget welback() {
     return const Text(
       'Welcome Back!',
       style: TextStyle(
-        fontSize: 30,
+        fontSize: 27,
         fontWeight: FontWeight.bold,
         color: Color(0xFF142238),
       ),
     );
   }
 
-  // Dashboard Title
   Widget dashboard() {
     return const Text(
       'Dashboard',
@@ -150,54 +240,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // Total Tasks Card
   Widget card() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: const Color(0xFFE3EDFF),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
         children: [
           Container(
-            height: 110,
-            width: 110,
+            height: 90,
+            width: 90,
             decoration: const BoxDecoration(
               color: Color(0xFFD3E3FF),
               shape: BoxShape.circle,
             ),
             child: const Icon(
-              Icons.assignment,
-              size: 65,
+              Icons.assignment_rounded,
+              size: 50,
               color: Color(0xFF2878F0),
             ),
           ),
 
-           SizedBox(width: 20),
+          const SizedBox(width: 20),
 
-           Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Total Tasks',
                   style: TextStyle(
-                    fontSize: 23,
+                    fontSize: 19,
                     color: Color(0xFF65798E),
                   ),
                 ),
 
-                SizedBox(height: 8),
+                const SizedBox(height: 5),
 
                 Text(
-              "   ${tasks.length}" ,
-                  style: TextStyle(
-                    fontSize: 50,
+                  "${tasks.length}",
+                  style: const TextStyle(
+                    fontSize: 42,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2878F0),
                   ),

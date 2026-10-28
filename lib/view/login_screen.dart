@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 class login extends StatefulWidget {
-  const new({super.key});
+  const login({super.key});
 
   @override
   State<login> createState() => _loginState();
@@ -9,138 +10,350 @@ class login extends StatefulWidget {
 
 TextEditingController email = TextEditingController();
 TextEditingController password = TextEditingController();
- var formkey = GlobalKey<FormState>() ;
+
+var formkey = GlobalKey<FormState>();
 
 class _loginState extends State<login> {
+  bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: const Color(0xFFF5F0FF),
-      body: Padding(
-        padding:  EdgeInsets.all(20),
-        child: Form(
-          key: formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-          
-              Icon(
-            Icons.task_alt,
-            size: 70,
-            color: Colors.blue,
-          ),
-               
-          
-              SizedBox(height: 30), 
-              Email() ,
-          
-              SizedBox(height: 20),
-          
-              Pass() ,
-          
-             SizedBox(height: 25),
-          
-              btn(),
-          
-             SizedBox(height: 15),
-              txtbtn()
-          
-            ],
+      backgroundColor: Color(0xFFF7F4FF),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(25),
+              child: Form(
+                key: formkey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    // Logo
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEAE5FF),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.task_alt,
+                        size: 70,
+                        color: Color(0xFF3478F6),
+                      ),
+                    ),
+
+                    SizedBox(height: 25),
+
+                    // Heading
+                    Text(
+                      "Welcome Back",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF20245B),
+                      ),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    Text(
+                      "Log in to manage your tasks",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+
+                    SizedBox(height: 40),
+
+                    Email(),
+
+                    SizedBox(height: 20),
+
+                    Pass(),
+
+                    SizedBox(height: 5),
+
+                    // Forgot Password
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "Forgot Password clicked",
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Forgot password?",
+                          style: TextStyle(
+                            color: Color(0xFF6650F5),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 15),
+
+                    btn(),
+
+                    SizedBox(height: 25),
+
+                    // Divider
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            color: Color(0xFFD4D0E8),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Text(
+                            "or continue with",
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Divider(
+                            color: Color(0xFFD4D0E8),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 25),
+
+                    // Google Button
+                    SizedBox(
+                      width: double.infinity,
+                      height: 55,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "Google login is not connected yet",
+                              ),
+                            ),
+                          );
+                        },
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide(
+                            color: Color(0xFFD4D0E8),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.g_mobiledata,
+                              size: 35,
+                              color: Colors.blue,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "Continue with Google",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFF20245B),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 25),
+
+                    txtbtn(),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget text (){
-    return Text(
-              "Login",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ) ;
-  }
-
-  Widget Email(){
+  Widget Email() {
     return TextFormField(
-      validator: (value) {
-        if(value == null || value.isEmpty){
-          return "please enter email" ;
-        }
-
-        else if (!value.contains("@")){
-          return "Enter valid email addres" ;
-        }
-      },
       controller: email,
-              decoration:  InputDecoration(
-                labelText: "Email",
-                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                prefixIcon: Icon(Icons.email),
-              ),
-            );
-  }
-
-  Widget Pass (){
-    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       validator: (value) {
-        if(value == null || value.isEmpty){
-          return "please enter password";
+        if (value == null || value.isEmpty) {
+          return "Please enter email";
+        } else if (!value.contains("@")) {
+          return "Enter valid email address";
         }
+        return null;
       },
-      controller: password,
-              obscureText: true,
-              decoration:  InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                
-                prefixIcon: Icon(Icons.lock),
-              ),
-            );
-  }
-
-  Widget btn (){
-    return SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                 if(formkey.currentState!.validate()){
-                  email.clear();
-                  password.clear();
-
-
-                    ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.green,
-                  content: Text("Login Successfully",style: TextStyle(),),
-                    duration: Duration(seconds: 2),
+      decoration: InputDecoration(
+        hintText: "Email address",
+        prefixIcon: Icon(Icons.email_outlined),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 15,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Color(0xFFD4D0E8),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Color(0xFF3478F6),
+            width: 1.5,
+          ),
+        ),
       ),
-
     );
-                  Navigator.pushNamed(context, "dashboard");
-
-                 }
-                
-
-                  print("Login clicked");
-
-                },
-                child: Text("Login"),
-              ),
-            );
   }
 
-Widget txtbtn (){
-  return 
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "signup");
-              },
-              child:  Text(
-                "Don't have an account? Sign Up",
+  Widget Pass() {
+    return TextFormField(
+      controller: password,
+      obscureText: !showPassword,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "Please enter password";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        hintText: "Password",
+        prefixIcon: Icon(Icons.lock_outline),
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              showPassword = !showPassword;
+            });
+          },
+          icon: Icon(
+            showPassword
+                ? Icons.visibility_off
+                : Icons.visibility,
+          ),
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 15,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Color(0xFFD4D0E8),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Color(0xFF3478F6),
+            width: 1.5,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget btn() {
+    return Container(
+      width: double.infinity,
+      height: 55,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF3478F6),
+            Color(0xFF8657F5),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          if (formkey.currentState!.validate()) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Login Successfully"),
+                backgroundColor: Colors.green,
+                duration: Duration(seconds: 2),
               ),
             );
-}
+
+            email.clear();
+            password.clear();
+
+            Navigator.pushNamed(context, "dashboard");
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: Text(
+          "Login",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget txtbtn() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Don't have an account? ",
+          style: TextStyle(
+            color: Colors.blueGrey,
+            fontSize: 14,
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "signup");
+          },
+          child: Text(
+            "Sign Up",
+            style: TextStyle(
+              color: Color(0xFF6650F5),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

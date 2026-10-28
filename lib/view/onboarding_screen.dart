@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -29,8 +30,7 @@ class OnboardingScreen extends StatelessWidget {
             SizedBox(height: 15),
 
             Text(
-              'Organize your daily tasks, '
-              'manage your time, and achieve your goals easily.',
+              Appstring.tow ,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
@@ -48,7 +48,7 @@ class OnboardingScreen extends StatelessWidget {
                   backgroundColor: const Color.fromARGB(255, 92, 231, 92),
                   foregroundColor: Colors.white,
                 ),
-                child: Text('Get Started', style: TextStyle(fontSize: 18)),
+                child: Text(Appstring.get, style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
