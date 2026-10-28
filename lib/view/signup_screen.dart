@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -25,7 +26,7 @@ class SignupScreen extends StatelessWidget {
               SizedBox(height: 25),
       
              Text(
-                'Create Account',
+                Appstring.signupCreateAccount,
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -36,7 +37,7 @@ class SignupScreen extends StatelessWidget {
              SizedBox(height: 10),
       
                Text(
-                'Sign up to get started',
+                Appstring.signupSubtitle,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -47,7 +48,7 @@ class SignupScreen extends StatelessWidget {
       
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Full Name',
+                  hintText: Appstring.signupFullNameHint,
                   prefixIcon: Icon(Icons.person_outline),
                   filled: true,
                   fillColor: Colors.white,
@@ -61,7 +62,7 @@ class SignupScreen extends StatelessWidget {
       
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  hintText: Appstring.signupEmailHint,
                   prefixIcon:  Icon(Icons.email_outlined),
                   filled: true,
                   fillColor: Colors.white,
@@ -76,7 +77,7 @@ class SignupScreen extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  hintText: Appstring.signupPasswordHint,
                   prefixIcon: Icon(Icons.lock_outline),
                   suffixIcon:  Icon(Icons.visibility_off),
                   filled: true,
@@ -92,7 +93,7 @@ class SignupScreen extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Confirm Password',
+                  hintText: Appstring.signupConfirmPasswordHint,
                   prefixIcon:  Icon(Icons.lock_outline),
                   suffixIcon:  Icon(Icons.visibility_off),
                   filled: true,
@@ -120,7 +121,7 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   child:  Text(
-                    'Sign Up',
+                    Appstring.signupBtn,
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
@@ -132,7 +133,7 @@ class SignupScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    Text(
-                    'Already have an account? ',
+                    Appstring.signupHaveAccount,
                     style: TextStyle(color: Colors.grey),
                   ),
                   TextButton(
@@ -140,7 +141,7 @@ class SignupScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child:  Text(
-                      'Login',
+                      Appstring.signupLoginLink,
                       style: TextStyle(
                         color: Color(0xFF536DFE),
                         fontWeight: FontWeight.bold,

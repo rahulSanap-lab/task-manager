@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class PrivacyPolicyScreen extends StatefulWidget {
   PrivacyPolicyScreen({super.key});
@@ -16,7 +17,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
       backgroundColor: Color(0xFFF4F7FD),
 
       appBar: AppBar(
-        title: Text('Privacy Policy'),
+        title: Text(Appstring.privacyTitle),
         backgroundColor: Color(0xFF2878F0),
         foregroundColor: Colors.white,
         centerTitle: true,
@@ -42,7 +43,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             SizedBox(height: 20),
 
             Text(
-              'Task Manager',
+              Appstring.privacyAppName,
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             SizedBox(height: 8),
 
             Text(
-              'Your privacy matters to us',
+              Appstring.privacySubtitle,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.blueGrey,
@@ -62,9 +63,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             SizedBox(height: 20),
 
             Text(
-              'We care about your privacy. '
-              'Read below to understand how your information '
-              'is collected and used.',
+              Appstring.privacyIntro,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
@@ -89,9 +88,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       color: Color(0xFF2878F0),
                       size: 30,
                     ),
-                    title: Text('Information We Collect'),
+                    title: Text(Appstring.privacyInfoCollect),
                     subtitle: Text(
-                      'Information collected while using the app.',
+                      Appstring.privacyInfoCollectSub,
                     ),
                     trailing: Icon(Icons.chevron_right),
                   ),
@@ -104,9 +103,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       color: Color(0xFF2878F0),
                       size: 30,
                     ),
-                    title: Text('How We Use Your Information'),
+                    title: Text(Appstring.privacyHowWeUse),
                     subtitle: Text(
-                      'How your information is used.',
+                      Appstring.privacyHowWeUseSub,
                     ),
                     trailing: Icon(Icons.chevron_right),
                   ),
@@ -119,9 +118,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       color: Color(0xFF2878F0),
                       size: 30,
                     ),
-                    title: Text('Data Security'),
+                    title: Text(Appstring.privacyDataSecurity),
                     subtitle: Text(
-                      'How we protect your information.',
+                      Appstring.privacyDataSecuritySub,
                     ),
                     trailing: Icon(Icons.chevron_right),
                   ),
@@ -134,9 +133,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       color: Color(0xFF2878F0),
                       size: 30,
                     ),
-                    title: Text('Third-Party Services'),
+                    title: Text(Appstring.privacyThirdParty),
                     subtitle: Text(
-                      'Information about external services.',
+                      Appstring.privacyThirdPartySub,
                     ),
                     trailing: Icon(Icons.chevron_right),
                   ),
@@ -149,9 +148,9 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       color: Color(0xFF2878F0),
                       size: 30,
                     ),
-                    title: Text('Your Rights'),
+                    title: Text(Appstring.privacyYourRights),
                     subtitle: Text(
-                      'Manage your personal information.',
+                      Appstring.privacyYourRightsSub,
                     ),
                     trailing: Icon(Icons.chevron_right),
                   ),
@@ -162,7 +161,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             SizedBox(height: 25),
 
             Text(
-              'Last updated: October 2026',
+              Appstring.privacyLastUpdated,
               style: TextStyle(
                 color: Colors.blueGrey,
                 fontSize: 13,

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 import 'package:taskmanager/const/bottomNavigationbar.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'My Profile',
+          Appstring.profileTitle,
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -91,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
 
               // Name
               const Text(
-                'Rahul Sanap',
+                Appstring.profileName,
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
 
               // Email
               const Text(
-                'rahul@example.com',
+                Appstring.profileEmail,
                 style: TextStyle(
                   fontSize: 18,
                   color: Color(0xFF65798E),
@@ -137,7 +138,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       title: const Text(
-                        'Edit Profile',
+                        Appstring.profileEditProfile,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -170,7 +171,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       title: const Text(
-                        'Notifications',
+                        Appstring.profileNotifications,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -203,7 +204,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       title: const Text(
-                        'Privacy',
+                        Appstring.profilePrivacy,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -238,7 +239,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        'About App',
+                        Appstring.profileAboutApp,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -273,7 +274,7 @@ class ProfileScreen extends StatelessWidget {
                     size: 28,
                   ),
                   label: const Text(
-                    'Logout',
+                    Appstring.profileLogout,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,

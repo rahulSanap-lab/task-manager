@@ -22,7 +22,7 @@ class OnboardingScreen extends StatelessWidget {
             SizedBox(height: 40),
 
             Text(
-              'Manage Your Tasks',
+              Appstring.onboardingTitle,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),

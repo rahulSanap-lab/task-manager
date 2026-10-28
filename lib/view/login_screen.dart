@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -50,7 +51,7 @@ class _loginState extends State<login> {
 
                     // Heading
                     Text(
-                      "Welcome Back",
+                      Appstring.loginWelcome,
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class _loginState extends State<login> {
                     SizedBox(height: 8),
 
                     Text(
-                      "Log in to manage your tasks",
+                      Appstring.loginSubtitle,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.blueGrey,
@@ -86,13 +87,13 @@ class _loginState extends State<login> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                "Forgot Password clicked",
+                                Appstring.loginForgotClicked,
                               ),
                             ),
                           );
                         },
                         child: Text(
-                          "Forgot password?",
+                          Appstring.loginForgotPassword,
                           style: TextStyle(
                             color: Color(0xFF6650F5),
                           ),
@@ -117,7 +118,7 @@ class _loginState extends State<login> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12),
                           child: Text(
-                            "or continue with",
+                            Appstring.loginOrContinueWith,
                             style: TextStyle(
                               color: Colors.blueGrey,
                             ),
@@ -142,7 +143,7 @@ class _loginState extends State<login> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                "Google login is not connected yet",
+                                Appstring.loginGoogleNotConnected,
                               ),
                             ),
                           );
@@ -165,7 +166,7 @@ class _loginState extends State<login> {
                             ),
                             SizedBox(width: 10),
                             Text(
-                              "Continue with Google",
+                              Appstring.loginContinueGoogle,
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Color(0xFF20245B),
@@ -195,14 +196,14 @@ class _loginState extends State<login> {
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Please enter email";
+          return Appstring.loginEmailEmpty;
         } else if (!value.contains("@")) {
-          return "Enter valid email address";
+          return Appstring.loginEmailInvalid;
         }
         return null;
       },
       decoration: InputDecoration(
-        hintText: "Email address",
+        hintText: Appstring.loginEmailHint,
         prefixIcon: Icon(Icons.email_outlined),
         filled: true,
         fillColor: Colors.white,
@@ -236,12 +237,12 @@ class _loginState extends State<login> {
       obscureText: !showPassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Please enter password";
+          return Appstring.loginPasswordEmpty;
         }
         return null;
       },
       decoration: InputDecoration(
-        hintText: "Password",
+        hintText: Appstring.loginPasswordHint,
         prefixIcon: Icon(Icons.lock_outline),
         suffixIcon: IconButton(
           onPressed: () {
@@ -299,7 +300,7 @@ class _loginState extends State<login> {
           if (formkey.currentState!.validate()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("Login Successfully"),
+                content: Text(Appstring.loginSuccessMsg),
                 backgroundColor: Colors.green,
                 duration: Duration(seconds: 2),
               ),
@@ -319,7 +320,7 @@ class _loginState extends State<login> {
           ),
         ),
         child: Text(
-          "Login",
+          Appstring.loginBtn,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -335,7 +336,7 @@ class _loginState extends State<login> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Don't have an account? ",
+          Appstring.loginNoAccount,
           style: TextStyle(
             color: Colors.blueGrey,
             fontSize: 14,
@@ -346,7 +347,7 @@ class _loginState extends State<login> {
             Navigator.pushNamed(context, "signup");
           },
           child: Text(
-            "Sign Up",
+            Appstring.loginSignUp,
             style: TextStyle(
               color: Color(0xFF6650F5),
               fontWeight: FontWeight.bold,

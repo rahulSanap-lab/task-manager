@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 
 class AboutAppScreen extends StatefulWidget {
   const AboutAppScreen({super.key});
@@ -19,7 +20,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
 
       appBar: AppBar(
         title: const Text(
-          'About App',
+          Appstring.aboutTitle,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -56,7 +57,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
 
             // App Name
             const Text(
-              'Task Manager',
+              Appstring.aboutAppName,
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
             const SizedBox(height: 8),
 
             const Text(
-              'Version 1.0.0',
+              Appstring.aboutVersion,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 14,
@@ -76,7 +77,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
             const SizedBox(height: 12),
 
             const Text(
-              'Manage your daily tasks easily\nand stay productive.',
+              Appstring.aboutDescription,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
@@ -87,7 +88,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
             const SizedBox(height: 12),
 
             const Text(
-              'Developed by Rahul Sanap',
+              Appstring.aboutDeveloper,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -110,15 +111,15 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       Icons.info_outline,
                       color: primaryColor,
                     ),
-                    title: const Text('App Information'),
+                    title: const Text(Appstring.aboutAppInfo),
                     subtitle: const Text(
-                      'App name, version and developer',
+                      Appstring.aboutAppInfoSubtitle,
                     ),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () {
                       showInfo(
-                        'App Information',
-                        'Task Manager\nVersion 1.0.0\nDeveloped by Rahul Sanap',
+                        Appstring.aboutAppInfo,
+                        Appstring.aboutAppInfoDetail,
                       );
                     },
                   ),
@@ -130,13 +131,13 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       Icons.privacy_tip_outlined,
                       color: primaryColor,
                     ),
-                    title: const Text('Privacy Policy'),
-                    subtitle: const Text('How we handle your data'),
+                    title: const Text(Appstring.aboutPrivacyPolicy),
+                    subtitle: const Text(Appstring.aboutPrivacySubtitle),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () {
                       showInfo(
-                        'Privacy Policy',
-                        'Privacy policy details will be added here.',
+                        Appstring.aboutPrivacyPolicy,
+                        Appstring.aboutPrivacyDetail,
                       );
                     },
                   ),
@@ -148,13 +149,13 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       Icons.description_outlined,
                       color: primaryColor,
                     ),
-                    title: const Text('Terms & Conditions'),
-                    subtitle: const Text('Rules for using our app'),
+                    title: const Text(Appstring.aboutTerms),
+                    subtitle: const Text(Appstring.aboutTermsSubtitle),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () {
                       showInfo(
-                        'Terms & Conditions',
-                        'Terms and conditions will be added here.',
+                        Appstring.aboutTerms,
+                        Appstring.aboutTermsDetail,
                       );
                     },
                   ),
@@ -166,13 +167,13 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       Icons.mail_outline,
                       color: primaryColor,
                     ),
-                    title: const Text('Contact Us'),
-                    subtitle: const Text('Get help or send feedback'),
+                    title: const Text(Appstring.aboutContact),
+                    subtitle: const Text(Appstring.aboutContactSubtitle),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () {
                       showInfo(
-                        'Contact Us',
-                        'Contact details will be added here.',
+                        Appstring.aboutContact,
+                        Appstring.aboutContactDetail,
                       );
                     },
                   ),
@@ -184,13 +185,13 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       Icons.star_outline,
                       color: primaryColor,
                     ),
-                    title: const Text('Rate This App'),
-                    subtitle: const Text('Share your experience'),
+                    title: const Text(Appstring.aboutRate),
+                    subtitle: const Text(Appstring.aboutRateSubtitle),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () {
                       showInfo(
-                        'Rate This App',
-                        'Thank you for using Task Manager!',
+                        Appstring.aboutRate,
+                        Appstring.aboutRateDetail,
                       );
                     },
                   ),
@@ -201,7 +202,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
             const SizedBox(height: 25),
 
             const Text(
-              'Made with ',
+              Appstring.aboutMadeWith,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 14,
@@ -228,7 +229,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('OK'),
+              child: const Text(Appstring.aboutOkBtn),
             ),
           ],
         );

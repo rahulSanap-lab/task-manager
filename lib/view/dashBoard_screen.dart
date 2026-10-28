@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 import 'package:taskmanager/const/bottomNavigationbar.dart';
 import 'package:taskmanager/modal/todo_Modal.dart';
 import 'package:taskmanager/repo/getdata.dart';
@@ -45,7 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           size: 35,
         ),
         title: const Text(
-          'Task Manager',
+          Appstring.dashAppBarTitle,
           style: TextStyle(
             color: Colors.white,
             fontSize: 22,
@@ -97,7 +98,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "Recent Tasks",
+                    Appstring.dashRecentTasks,
                     style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
@@ -110,7 +111,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Navigator.pushNamed(context, "tasks");
                     },
                     child: const Text(
-                      "View all →",
+                      Appstring.dashViewAll,
                       style: TextStyle(
                         color: Color(0xFF2878F0),
                         fontSize: 14,
@@ -126,7 +127,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: tasks.isEmpty
                     ? const Center(
                         child: Text(
-                          "No tasks available",
+                          Appstring.dashNoTasks,
                           style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16,
@@ -210,7 +211,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget goodm() {
     return const Text(
-      'Good Morning,',
+      Appstring.dashGoodMorning,
       style: TextStyle(
         fontSize: 19,
         color: Color(0xFF65798E),
@@ -220,7 +221,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget welback() {
     return const Text(
-      'Welcome Back!',
+      Appstring.dashWelcomeBack,
       style: TextStyle(
         fontSize: 27,
         fontWeight: FontWeight.bold,
@@ -231,7 +232,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget dashboard() {
     return const Text(
-      'Dashboard',
+      Appstring.dashDashboard,
       style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -271,7 +272,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Total Tasks',
+                  Appstring.dashTotalTasks,
                   style: TextStyle(
                     fontSize: 19,
                     color: Color(0xFF65798E),

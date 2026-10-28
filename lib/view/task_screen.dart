@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:taskmanager/const/appString.dart';
 import 'package:taskmanager/const/bottomNavigationbar.dart';
 import 'package:taskmanager/modal/todo_Modal.dart';
 import 'package:taskmanager/repo/getdata.dart';
@@ -51,7 +52,7 @@ class _taskState extends State<task> {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "Your Tasks",
+          Appstring.taskAppBarTitle,
           style: TextStyle(
             fontSize: 21,
             fontWeight: FontWeight.w600,
@@ -67,7 +68,7 @@ class _taskState extends State<task> {
             Row(
               children: [
                 const Text(
-                  "My Tasks",
+                  Appstring.taskMyTasks,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -116,7 +117,7 @@ class _taskState extends State<task> {
                               ),
                               const SizedBox(height: 12),
                               const Text(
-                                "No tasks yet",
+                                Appstring.taskNoTasksYet,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -125,7 +126,7 @@ class _taskState extends State<task> {
                               ),
                               const SizedBox(height: 6),
                               const Text(
-                                "Tap + to add your first task",
+                                Appstring.taskAddFirstTask,
                                 style: TextStyle(
                                   color: Color(0xFF98A2B3),
                                 ),
@@ -219,12 +220,12 @@ class _taskState extends State<task> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: const Text("Add Task"),
+          title: const Text(Appstring.taskAddDialogTitle),
           content: TextField(
             controller: tsk,
             autofocus: true,
             decoration: InputDecoration(
-              hintText: "Enter task name",
+              hintText: Appstring.taskAddHint,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -234,7 +235,7 @@ class _taskState extends State<task> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: const Text("Cancel"),
+              child: const Text(Appstring.taskCancelBtn),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -250,13 +251,13 @@ class _taskState extends State<task> {
                
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text("Task added successfully!"),
+                    content: Text(Appstring.taskAddSuccess),
                     backgroundColor: Colors.green,
                   ));
 
 
               },
-              child: const Text("Add"),
+              child: const Text(Appstring.taskAddBtn),
             ),
           ],
         );
@@ -274,12 +275,12 @@ class _taskState extends State<task> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: const Text("Update Task"),
+          title: const Text(Appstring.taskEditDialogTitle),
           content: TextField(
             controller: tsk,
             autofocus: true,
             decoration: InputDecoration(
-              hintText: "Update task name",
+              hintText: Appstring.taskEditHint,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -288,7 +289,7 @@ class _taskState extends State<task> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: const Text("Cancel"),
+              child: const Text(Appstring.taskCancelBtn),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -309,12 +310,12 @@ class _taskState extends State<task> {
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text("Task updated successfully!"),
+                    content: Text(Appstring.taskEditSuccess),
                     backgroundColor: Colors.green,
                   ),
                 );
               },
-              child: const Text("Update"),
+              child: const Text(Appstring.taskEditBtn),
             ),
           ],
         );
@@ -330,14 +331,14 @@ class _taskState extends State<task> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: const Text("Delete Task"),
+          title: const Text(Appstring.taskDeleteDialogTitle),
           content: const Text(
-            "Are you sure you want to delete this task?",
+            Appstring.taskDeleteConfirm,
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: const Text("Cancel"),
+              child: const Text(Appstring.taskCancelBtn),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -356,11 +357,11 @@ class _taskState extends State<task> {
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text("Task deleted successfully!"),
+                    content: Text(Appstring.taskDeleteSuccess),
                   ),
                 );
               },
-              child: const Text("Delete"),
+              child: const Text(Appstring.taskDeleteBtn),
             ),
           ],
         );
