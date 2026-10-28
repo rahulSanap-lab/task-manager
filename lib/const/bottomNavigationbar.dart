@@ -15,11 +15,13 @@ class _barState extends State<bar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
-      selectedItemColor: const Color(0xFF3478F6),
+
+      selectedItemColor: Color(0xFF3478F6),
       unselectedItemColor: Colors.blueGrey,
+
       type: BottomNavigationBarType.fixed,
 
-      items: const [
+      items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: "Home",
@@ -29,22 +31,30 @@ class _barState extends State<bar> {
           label: "Tasks",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle_outlined),
-          label: "profile",
+          icon: Icon(Icons.person),
+          label: "Profile",
         ),
       ],
 
-      onTap: (index) {
-        setState(() {
-          selectedIndex = index;
-        });
+     
+onTap: (index) {
+  setState(() {
+    selectedIndex = index;
+  });
 
-        if (index == 1) {
-          Navigator.pushNamed(context, "task");
-        } else if (index == 2) {
-          Navigator.pushNamed(context, "profile");
-        }
-      },
+  if (index == 0) {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      "dashboard",
+      (route) => false,
+    );
+  } else if (index == 1) {
+    Navigator.pushNamed(context, "task");
+  } else if (index == 2) {
+    Navigator.pushNamed(context, "profile");
+  }
+},
+
     );
   }
 }
