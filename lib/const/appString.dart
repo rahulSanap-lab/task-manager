@@ -2,6 +2,7 @@ class Appstring {
   // splash screen
   static const String tskflow = "TaskFlow";
   static const String plit = "Plan it. Do it. Achieve it";
+  static const String done = "done";
 
   // on boarding screen
   static const String mantsk = "Manage Your Tasks";
@@ -80,7 +81,8 @@ class Appstring {
   static const String taskEditSuccess = "Task updated successfully!";
   // delete dialog
   static const String taskDeleteDialogTitle = "Delete Task";
-  static const String taskDeleteConfirm = "Are you sure you want to delete this task?";
+  static const String taskDeleteConfirm =
+      "Are you sure you want to delete this task?";
   static const String taskDeleteBtn = "Delete";
   static const String taskDeleteSuccess = "Task deleted successfully!";
   static const String taskCancelBtn = "Cancel";
@@ -99,7 +101,8 @@ class Appstring {
   static const String aboutTitle = "About App";
   static const String aboutAppName = "Task Manager";
   static const String aboutVersion = "Version 1.0.0";
-  static const String aboutDescription = "Manage your daily tasks easily\nand stay productive.";
+  static const String aboutDescription =
+      "Manage your daily tasks easily\nand stay productive.";
   static const String aboutDeveloper = "Developed by Rahul Sanap";
   static const String aboutMadeWith = "Made with ";
   static const String aboutAppInfo = "App Information";
@@ -113,10 +116,14 @@ class Appstring {
   static const String aboutRate = "Rate This App";
   static const String aboutRateSubtitle = "Share your experience";
   static const String aboutOkBtn = "OK";
-  static const String aboutAppInfoDetail = "Task Manager\nVersion 1.0.0\nDeveloped by Rahul Sanap";
-  static const String aboutPrivacyDetail = "Privacy policy details will be added here.";
-  static const String aboutTermsDetail = "Terms and conditions will be added here.";
-  static const String aboutContactDetail = "Contact details will be added here.";
+  static const String aboutAppInfoDetail =
+      "Task Manager\nVersion 1.0.0\nDeveloped by Rahul Sanap";
+  static const String aboutPrivacyDetail =
+      "Privacy policy details will be added here.";
+  static const String aboutTermsDetail =
+      "Terms and conditions will be added here.";
+  static const String aboutContactDetail =
+      "Contact details will be added here.";
   static const String aboutRateDetail = "Thank you for using Task Manager!";
 
   // privacy screen
@@ -126,14 +133,18 @@ class Appstring {
   static const String privacyIntro =
       'We care about your privacy. Read below to understand how your information is collected and used.';
   static const String privacyInfoCollect = "Information We Collect";
-  static const String privacyInfoCollectSub = "Information collected while using the app.";
+  static const String privacyInfoCollectSub =
+      "Information collected while using the app.";
   static const String privacyHowWeUse = "How We Use Your Information";
   static const String privacyHowWeUseSub = "How your information is used.";
   static const String privacyDataSecurity = "Data Security";
-  static const String privacyDataSecuritySub = "How we protect your information.";
+  static const String privacyDataSecuritySub =
+      "How we protect your information.";
   static const String privacyThirdParty = "Third-Party Services";
-  static const String privacyThirdPartySub = "Information about external services.";
+  static const String privacyThirdPartySub =
+      "Information about external services.";
   static const String privacyYourRights = "Your Rights";
-  static const String privacyYourRightsSub = "Manage your personal information.";
+  static const String privacyYourRightsSub =
+      "Manage your personal information.";
   static const String privacyLastUpdated = "Last updated: October 2026";
 }
